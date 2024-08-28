@@ -1,0 +1,19 @@
+# Utiles
+    python3
+    exit() para salir de la interfaz de python
+# Instalación
+    apt update
+    sudo apt update
+    sudo apt -y upgrade
+# Verificar Instalación de python
+    python3 -V
+    Instalación de gestor de paquetes de dependencias
+    sudo apt insstall -y python3-pip
+# Verificar Instalación del gestor
+    pip3 -V
+# Dependencias en entorno profesional
+    apt install -y build-essential libssl-dev libffi-dev python3-dev
+# VSCode 
+## Extensiones
+    Python
+    Wsl
