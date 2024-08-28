@@ -24,3 +24,8 @@ Para correr juego debe ejecutar lo siguiente
     cd game
     python3 main.py
     ```
+
+# Recursos para trabajar con pip3
+*  [pypi](https://pypi.org/)
+## Comandos utiles con pip3
+     pip3 freeze (arbol de librerías de entorno de python global)
