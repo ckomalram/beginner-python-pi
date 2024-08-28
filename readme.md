@@ -17,3 +17,10 @@
 ## Extensiones
     Python
     Wsl
+
+# Game Project
+Para correr juego debe ejecutar lo siguiente    
+    ```sh
+    cd game
+    python3 main.py
+    ```
