@@ -9,6 +9,7 @@
     python3 -V
     Instalación de gestor de paquetes de dependencias
     sudo apt insstall -y python3-pip
+   
 # Verificar Instalación del gestor
     pip3 -V
 # Dependencias en entorno profesional
@@ -29,3 +30,13 @@ Para correr juego debe ejecutar lo siguiente
 *  [pypi](https://pypi.org/)
 ## Comandos utiles con pip3
      pip3 freeze (arbol de librerías de entorno de python global)
+     which pip3
+     which python3
+# Manejar ambientes con python-venv
+Tener ambiente aislado de solos paquetes ques se utilicen en el proyecto.
+    sudo apt install -y python3-venv
+     python3 -m venv my-env
+     source my-env/bin/activate
+     deactivate
+     pip3 install matplotlib
+## Archivo requirements.txt
