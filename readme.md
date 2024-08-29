@@ -20,9 +20,17 @@
     Wsl
 
 # Game Project
-Para correr juego debe ejecutar lo siguiente    
     ```sh
     cd game
+    python3 main.py
+    ```
+# App Project
+    ```sh   
+    git clone
+    python3 -m venv env    
+    source my-env/bin/activate
+    cd app
+    pip3 install -r requirements.txt
     python3 main.py
     ```
 
@@ -40,3 +48,5 @@ Tener ambiente aislado de solos paquetes ques se utilicen en el proyecto.
      deactivate
      pip3 install matplotlib
 ## Archivo requirements.txt
+pip3 freeze > requirements.txt
+pip3 install -r requirements.txt
