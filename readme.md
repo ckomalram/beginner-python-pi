@@ -53,7 +53,12 @@
 ## Commans of task tracker project
     ```sh  
     python3 main.py add "Example Description"
+    python3 main.py list
+    python3 main.py list [done|todo|in-progress]
     ``` 
+    
+
+
 
 
 ## Referencias

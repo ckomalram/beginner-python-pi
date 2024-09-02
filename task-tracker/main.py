@@ -3,9 +3,7 @@ import json
 from datetime import datetime
 
 TASK_FILE = "tasks.json"
-
 COMMANDS = ["add"]
-
 
 def load_tasks():
     try:
@@ -14,9 +12,17 @@ def load_tasks():
     except FileNotFoundError:
         print("FileNotFoundError ==>")
         return []
+
 def save_tasks(tasks):
     with open(TASK_FILE, "w") as file:
         json.dump(tasks, file, indent=4)
+
+def print_tasks(tasks):
+        print("\n List Of Tasks:")
+        for task in tasks:
+            print(f"ID: {task['id']} | DESCRIPTION: {task['description']} | STATUS: {task['status']} ")                
+
+## TODO UPDATE IF
 
 def main():
     if len(sys.argv) < 2:
@@ -44,6 +50,24 @@ def main():
         save_tasks(tasks)
         print(tasks)
         print(f"Task Added successfully (ID: {task_id})")
+    if command == "list":
+        tasks = load_tasks()
+        # print(len(sys.argv))
+        if len(sys.argv) == 2:
+            if not tasks:
+                print(" Not Tasks found")
+            else:
+                print_tasks(tasks)
+        elif len(sys.argv)==3:
+            status = sys.argv[2]
+            filtered_tasks = [task for task in tasks if task["status"] == status]
+            if not filtered_tasks:
+                print(" Not Filtered Tasks  found")
+            else:
+                print_tasks(filtered_tasks)
+        else:
+            print("usage: main.py list [done|todo|in-progress]")
+
 
 if __name__ == "__main__":
     main()
