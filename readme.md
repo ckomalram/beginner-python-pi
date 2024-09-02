@@ -42,6 +42,20 @@
     pip3 install -r requirements.txt
     uvicorn main:app --reload
     ```   
+# Task Tracker Project
+    ```sh   
+    git clone
+    python3 -m venv env    
+    source env/bin/activate
+    cd task-tracker
+    pip3 install -r requirements.txt
+    ``` 
+## Commans of task tracker project
+    ```sh  
+    python3 main.py add "Example Description"
+    ``` 
+
+
 ## Referencias
 https://fastapi.tiangolo.com/advanced/custom-response/?h=custom+re#html-response
 
