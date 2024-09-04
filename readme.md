@@ -52,9 +52,11 @@
     ``` 
 ## Commans of task tracker project
     ```sh  
-    python3 main.py add "Example Description"
+    python3 main.py add "New Description"
     python3 main.py list
     python3 main.py list [done|todo|in-progress]
+    python3 main.py update 1 "Updated Description"
+    python3 main.py delete 1
     ``` 
     
 

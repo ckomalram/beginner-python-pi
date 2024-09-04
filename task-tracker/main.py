@@ -22,9 +22,34 @@ def print_tasks(tasks):
         for task in tasks:
             print(f"ID: {task['id']} | DESCRIPTION: {task['description']} | STATUS: {task['status']} ")                
 
-## TODO UPDATE IF
+def update_task(id, newDescription):
+    tasks = load_tasks()
+    task_id = int(id)
 
+    for task in tasks:
+        if task["id"] == task_id:
+            task["description"] = newDescription
+            task["updatedAt"] = datetime.now().isoformat()
+            break
+    else: # only executed if not throw break action  during execution
+        print(f"Task with ID {task_id} not found.")
+        return
+    
+    save_tasks(tasks)
+    print(f"Task with ID {task_id} updated sucessfully.")
+
+def delete_task(id):
+    tasks = load_tasks()
+    task_id = int(id)
+    tasks = [task for task in tasks if task["id"] != task_id]
+
+    save_tasks(tasks)
+    print(f"Task with ID {task_id} deleted sucessfully.")
+
+## TODO Marcar una Tarea como "In Progress" o "Done"
+ 
 def main():
+    print(sys.argv)
     if len(sys.argv) < 2:
         print("usage : main.py <command> [options]")
         return
@@ -50,7 +75,7 @@ def main():
         save_tasks(tasks)
         print(tasks)
         print(f"Task Added successfully (ID: {task_id})")
-    if command == "list":
+    elif command == "list":
         tasks = load_tasks()
         # print(len(sys.argv))
         if len(sys.argv) == 2:
@@ -67,6 +92,23 @@ def main():
                 print_tasks(filtered_tasks)
         else:
             print("usage: main.py list [done|todo|in-progress]")
+    elif command == "update":
+        #python3 main.py update 1 "Updated Description"
+        if len(sys.argv) < 4:
+            print("Please, write id and new description")
+        else:
+            id = sys.argv[2]
+            newDesc = sys.argv[3]
+            update_task(id, newDesc)
+    elif command == "delete":
+        if len(sys.argv) < 3:
+            print("Please, write id")
+        else:
+            delete_task(sys.argv[2])
+    else:
+        print("Command no recognize! please try again")
+
+        
 
 
 if __name__ == "__main__":
