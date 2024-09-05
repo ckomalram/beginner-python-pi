@@ -56,12 +56,9 @@
     python3 main.py list
     python3 main.py list [done|todo|in-progress]
     python3 main.py update 1 "Updated Description"
-    python3 main.py delete 1
-    ``` 
-    
-
-
-
+    python3 main.py mark-in-progress 1
+    python3 main.py mark-done 1
+    ```  
 
 ## Referencias
 https://fastapi.tiangolo.com/advanced/custom-response/?h=custom+re#html-response

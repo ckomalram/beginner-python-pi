@@ -3,7 +3,7 @@ import json
 from datetime import datetime
 
 TASK_FILE = "tasks.json"
-COMMANDS = ["add"]
+COMMANDS = ["add" , "update", "delete", "mark-in-progress", "mark-done", "list"]
 
 def load_tasks():
     try:
@@ -46,15 +46,44 @@ def delete_task(id):
     save_tasks(tasks)
     print(f"Task with ID {task_id} deleted sucessfully.")
 
-## TODO Marcar una Tarea como "In Progress" o "Done"
+def mark_in_progress_task(task_id):
+    tasks = load_tasks()
+    task_id = int(task_id)
+    for task in tasks:
+        if task["id"] == task_id:
+            task["status"] = "in-progress" # "in-progress" "done"
+            task["updatedAt"] = datetime.now().isoformat()
+            save_tasks(tasks)
+            print(f"Task with ID {task_id} mark sucessfully.")
+            return
+    else:
+        print(f"Task with ID {task_id} not found.")
+
+def mark_done_task(task_id):
+    tasks = load_tasks()
+    task_id = int(task_id)
+    for task in tasks:
+        if task["id"] == task_id:
+            task["status"] = "done" 
+            task["updatedAt"] = datetime.now().isoformat()
+            save_tasks(tasks)
+            print(f"Task with ID {task_id} mark sucessfully.")
+            break
+    else:
+        print(f"Task with ID {task_id} not found.")
+        return
  
 def main():
-    print(sys.argv)
     if len(sys.argv) < 2:
         print("usage : main.py <command> [options]")
         return
     
     command = sys.argv[1]
+
+    if command not in COMMANDS:
+        print(f"Unknown command: {command}")
+        print("Available commands: add, update, delete, mark-in-progress, mark-done, list")
+        return
 
     if command == "add":
         if len(sys.argv) < 3:
@@ -93,7 +122,6 @@ def main():
         else:
             print("usage: main.py list [done|todo|in-progress]")
     elif command == "update":
-        #python3 main.py update 1 "Updated Description"
         if len(sys.argv) < 4:
             print("Please, write id and new description")
         else:
@@ -105,6 +133,18 @@ def main():
             print("Please, write id")
         else:
             delete_task(sys.argv[2])
+    elif command == "mark-in-progress":
+        if len(sys.argv) < 3:
+            print("Please, write id")
+        else:
+            id = sys.argv[2]
+            mark_in_progress_task(id)   
+    elif command == "mark-done":
+        if len(sys.argv) < 3:
+            print("Please, write id")
+        else:
+            id = sys.argv[2]
+            mark_done_task(id)                        
     else:
         print("Command no recognize! please try again")
 
